@@ -69,7 +69,7 @@ is_worktime <- ifelse(current_time >= 12, TRUE, FALSE)
 info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp <= 72 & info$name == "ellie" ~ "on",
-    is_it_weekend == FALSE & is_worktime == TRUE & info$temp <= 72 & 
+    is_it_weekend == FALSE & is_worktime == TRUE & info$temp <= 70 & 
         info$name == "office" ~ "on",
     1 == 1 ~ "off"
 )
