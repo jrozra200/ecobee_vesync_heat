@@ -51,6 +51,7 @@ You'll just need a few packages installed to run the R bit:
 1. lubridate
 2. httr
 3. jsonlite
+4. dplyr
 
 You can run this line of code in `sudo R` (as root): 
 
