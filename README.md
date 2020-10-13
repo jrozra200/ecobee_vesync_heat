@@ -55,7 +55,7 @@ You'll just need a few packages installed to run the R bit:
 You can run this line of code in `sudo R` (as root): 
 
 ```
-install.packages(c("lubridate", "httr", "jsonlite"))
+install.packages(c("lubridate", "httr", "jsonlite", "dplyr"))
 ```
 
 ### Python Requirements
