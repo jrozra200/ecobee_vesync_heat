@@ -12,8 +12,8 @@ I have an [Ecobee 3 lite](https://www.ecobee.com/ecobee3-lite/) with two
 [Smart Sensors](https://www.ecobee.com/en-us/smart-sensor/). I am also using 
 [Etekcity Voltson Smart WiFi Outlets](http://www.vesync.com/esw01usa). 
 
-That's the "smart" bit. To cool the room, I am just using your run-of-the-mill 
-window AC unit I got at Home Depot or something... 
+That's the "smart" bit. To heat the room, I am just using your run-of-the-mill 
+floor heater I got at Home Depot or something... 
 
 # Getting Started
 
