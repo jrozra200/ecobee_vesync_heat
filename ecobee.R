@@ -77,7 +77,7 @@ info$action <- case_when(
 print(paste0(Sys.time(), ": Formatted Data. Telling VeSync what to do."))
 
 print(paste0(Sys.time(), ": here is the current status of each room and the state it should be in:"))
-print(ellie)
+print(info)
 
 for(python in 1:dim(info)[1]){
     py_cmd <- paste0("python3 /home/jacobrozran/ecobee/vesync.py ", 
