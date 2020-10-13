@@ -57,7 +57,7 @@ for(sensor in 1:3){
 }
 
 info$name <- tolower(gsub("'s Room", "", info$name))
-info <- info[info$name %in% c("ellie", "luke"), ]
+info <- info[info$name %in% c("ellie", "office"), ]
 
 is_it_weekend <- ifelse(weekdays(Sys.Date()) %in% c("Saturday", "Sunday"), TRUE, 
                         FALSE)
@@ -70,7 +70,7 @@ info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp <= 72 & info$name == "ellie" ~ "on",
     is_it_weekend == FALSE & is_worktime == TRUE & info$temp <= 72 & 
-        info$name == "luke" ~ "on",
+        info$name == "office" ~ "on",
     1 == 1 ~ "off"
 )
 
