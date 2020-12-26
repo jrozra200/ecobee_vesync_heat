@@ -26,7 +26,7 @@ newvesyncfilename='/home/jacobrozran/ecobee/logs/vesync'$(date +%Y%m%d)'.log'
 mv $vesyncfilename $newvesyncfilename
 
 # MOVE THE LOG ROTATION LOG FILE
-logrotatefilename='/home/jacobrozran/ecobee/log_rotation.log'
+logrotatefilename='/home/jacobrozran/ecobee/log_roation.log'
 newlogrotatefilename='/home/jacobrozran/ecobee/logs/log_rotation'$(date +%Y%m%d)'.log'
 
 mv $logrotatefilename $newlogrotatefilename
@@ -35,6 +35,6 @@ echo $(date)': Moved Vesync Logs.'
 
 # DELETE THE LOGS OLDER THAN A WEEK
 
-find /home/ec2-user/ecobee/logs/ -type f -mtime +7 -delete
+find /home/jacobrozran/ecobee/logs/ -type f -mtime +7 -delete
 
 echo $(date)': Deleted logs that are older than 7 days.'
