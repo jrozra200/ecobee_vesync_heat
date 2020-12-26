@@ -29,7 +29,7 @@ get_access_refresh <- function(access_code, client_id){
     getrefresh <- POST(get_access_code)
     
     at <- gsub("(^.*access_token\": \")((\\w|-|\\.)+)(\".*$)", "\\2", as.character(getrefresh))
-    rt <- gsub("(^.*refresh_token\": \")(\\w+)(\".*$)", "\\2", as.character(getrefresh))
+    rt <- gsub("(^.*refresh_token\": \")((\\w|-|\\.)+)(\".*$)", "\\2", as.character(getrefresh))
     
     creds <- data.frame(access_token = at,
                         refresh_token = rt,

@@ -20,8 +20,8 @@ if(grepl("access_token", as.character(ref)) == FALSE) {
     break
 }
 
-at <- gsub("(^.*access_token\": \")((\\w|-|\\.)+)(\".*$)", "\\2", as.character(refresh))
-rt <- gsub("(^.*refresh_token\": \")(\\w+)(\".*$)", "\\2", as.character(refresh))
+at <- gsub("(^.*access_token\": \")((\\w|-|\\.)+)(\".*$)", "\\2", as.character(getrefresh))
+rt <- gsub("(^.*refresh_token\": \")((\\w|-|\\.)+)(\".*$)", "\\2", as.character(getrefresh))
 
 creds <- data.frame(access_token = at,
                     refresh_token = rt,
