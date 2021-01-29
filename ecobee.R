@@ -44,7 +44,7 @@ response <- read_json("/home/jacobrozran/ecobee/response.json")
 print(paste0(Sys.time(), ": Got Temps. Formatting Data."))
 
 info <- data.frame()
-for(sensor in 1:3){
+for(sensor in 1:length(response$thermostatList[[1]]$remoteSensors)){
     name <- response$thermostatList[[1]]$remoteSensors[[sensor]]$name
     temp <- as.numeric(response$thermostatList[[1]]$remoteSensors[[sensor]]$capability[[1]]$value) / 10
     
