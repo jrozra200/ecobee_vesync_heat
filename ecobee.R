@@ -47,9 +47,11 @@ info <- data.frame()
 for(sensor in 1:length(response$thermostatList[[1]]$remoteSensors)){
     name <- response$thermostatList[[1]]$remoteSensors[[sensor]]$name
     temp <- as.numeric(response$thermostatList[[1]]$remoteSensors[[sensor]]$capability[[1]]$value) / 10
+    occupied <- response$thermostatList[[1]]$remoteSensors[[sensor]]$capability[[2]]$value
     
     tmp <- data.frame(name = name,
-                      temp = temp)
+                      temp = temp,
+                      occupied = occupied)
     tmp$time_utc <- response$thermostatList[[1]]$utcTime
     tmp$time_local <- response$thermostatList[[1]]$thermostatTime
     
@@ -70,8 +72,8 @@ is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
 info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp <= 70 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
-    is_it_weekend == FALSE & is_worktime == TRUE & info$temp <= 72 & 
-        info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK
+    ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
+        info$temp <= 72 & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
     (is_sleeptime_parents == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp <= 70 & info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     1 == 1 ~ "off"
