@@ -64,7 +64,7 @@ info <- info[info$name %in% c("ellie", "office", "regina"), ]
 is_it_weekend <- ifelse(weekdays(Sys.Date()) %in% c("Saturday", "Sunday"), TRUE, 
                         FALSE)
 current_time <- hour(Sys.time()) + (minute(Sys.time()) / 60)
-is_afternoon_nap <- ifelse(current_time >= 16 & current_time <= 19.5, TRUE, FALSE)
+is_afternoon_nap <- ifelse(current_time >= 16 & current_time <= 18, TRUE, FALSE)
 is_sleeptime <- ifelse(current_time >= 23 | current_time <= 11, TRUE, FALSE)
 is_sleeptime_parents <- ifelse(current_time >= 1 & current_time <= 11, TRUE, FALSE)
 is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
