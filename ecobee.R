@@ -72,8 +72,8 @@ info$action <- case_when(
         info$temp <= 70 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
     is_it_weekend == FALSE & is_worktime == TRUE & info$temp <= 72 & 
         info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK
-    is_sleeptime_parents == TRUE & info$temp <= 70 & 
-        info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING
+    (is_sleeptime_parents == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
+        info$temp <= 70 & info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     1 == 1 ~ "off"
 )
 
