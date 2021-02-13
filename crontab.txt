@@ -1,4 +1,4 @@
 # CRONTAB SETTINGS
 
-*/5 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
+*/1 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 0 0 * * * /bin/bash /home/jacobrozran/ecobee/log_rotaion.sh >> /home/jacobrozran/ecobee/log_roation.log 2>&1

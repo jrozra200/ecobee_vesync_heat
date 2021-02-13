@@ -33,8 +33,8 @@ mv $logrotatefilename $newlogrotatefilename
 
 echo $(date)': Moved Vesync Logs.'
 
-# DELETE THE LOGS OLDER THAN A WEEK
+# DELETE THE LOGS OLDER THAN A DAY
 
-find /home/jacobrozran/ecobee/logs/ -type f -mtime +7 -delete
+find /home/jacobrozran/ecobee/logs/ -type f -mtime +1 -delete
 
-echo $(date)': Deleted logs that are older than 7 days.'
+echo $(date)': Deleted logs that are older than 1 day.'
