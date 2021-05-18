@@ -72,12 +72,12 @@ is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
 
 info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
-        info$temp <= 70 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
+        info$temp >= 69.9 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
     ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-        info$temp <= 72 & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-    ((is_sleeptime_parents_early == TRUE & info$temp <= 70) | 
-         (is_sleeptime_parents_late == TRUE & info$temp <= 66) |
-         (is_it_weekend == TRUE & is_afternoon_nap == TRUE & info$temp <= 70)) & 
+        info$temp >= 71.9 & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
+    ((is_sleeptime_parents_early == TRUE & info$temp >= 69.9) | 
+         (is_sleeptime_parents_late == TRUE & info$temp >= 71.9) |
+         (is_it_weekend == TRUE & is_afternoon_nap == TRUE & info$temp >= 69.9)) & 
          info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     1 == 1 ~ "off"
 )
