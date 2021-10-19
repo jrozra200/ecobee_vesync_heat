@@ -63,20 +63,29 @@ info <- info[info$name %in% c("ellie", "office", "regina"), ]
 
 is_it_weekend <- ifelse(weekdays(Sys.Date()) %in% c("Saturday", "Sunday"), TRUE, 
                         FALSE)
+print(paste0("Is it a Weekend? ", is_it_weekend))
+
 current_time <- hour(Sys.time()) + (minute(Sys.time()) / 60)
+print(paste0("Current Time: ", current_time))
+
 is_afternoon_nap <- ifelse(current_time >= 15 & current_time <= 17.5, TRUE, FALSE)
+print(paste0("Is Afternoon Nap? ", is_afternoon_nap))
+
 is_sleeptime <- ifelse(current_time >= 22.25 | current_time <= 10.5, TRUE, FALSE)
-is_sleeptime_parents_early <- ifelse(current_time >= 23.5 | current_time <= 3, TRUE, FALSE)
-is_sleeptime_parents_late <- ifelse(current_time > 3 & current_time <= 10.5, TRUE, FALSE)
+print(paste0("Is Kid's Sleep Time? ", is_sleeptime))
+
+is_sleeptime_parents <- ifelse(current_time >= 23.0 | current_time <= 10.5, TRUE, FALSE)
+print(paste0("Is Parent's Sleep Time? ", is_sleeptime_parents))
+
 is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
+print(paste0("Is Work Time? ", is_worktime))
 
 info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp <= 68.0 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
     ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
         info$temp <= 70.0 & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-    ((is_sleeptime_parents_early == TRUE & info$temp <= 68.0) | 
-         (is_sleeptime_parents_late == TRUE & info$temp <= 68.0)) & 
+    (is_sleeptime_parents == TRUE & info$temp <= 68.0) & 
          info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     1 == 1 ~ "off"
 )
