@@ -26,7 +26,7 @@ newvesyncfilename='/home/jacobrozran/ecobee/logs/vesync'$(date +%Y%m%d)'.log'
 mv $vesyncfilename $newvesyncfilename
 
 # MOVE THE LOG ROTATION LOG FILE
-logrotatefilename='/home/jacobrozran/ecobee/log_roation.log'
+logrotatefilename='/home/jacobrozran/ecobee/log_rotation.log'
 newlogrotatefilename='/home/jacobrozran/ecobee/logs/log_rotation'$(date +%Y%m%d)'.log'
 
 mv $logrotatefilename $newlogrotatefilename
