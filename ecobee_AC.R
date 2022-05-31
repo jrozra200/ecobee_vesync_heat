@@ -94,15 +94,15 @@ inactive_temp <- 72.0
 info$action <- case_when(
     (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
         info$temp >= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
-    info$temp >= sleep_temp & info$name == "ellie" ~ "on", # TOO HOT IN THE KIDS ROOM DURING REGULAR TIME
+    info$temp >= inactive_temp & info$name == "ellie" ~ "on", # TOO HOT IN THE KIDS ROOM DURING REGULAR TIME
     ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
         info$temp >= active_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-    info$temp >= sleep_temp & info$name == "office" ~ "on", # TOO HOT IN THE OFFICE ROOM DURING OTHER TIME
+    info$temp >= inactive_temp & info$name == "office" ~ "on", # TOO HOT IN THE OFFICE ROOM DURING OTHER TIME
     ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp >= active_temp) & 
          info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     (is_sleeptime_parents_late == TRUE & info$temp >= sleep_temp) & 
         info$name == "regina" ~ "on",
-    info$temp >= sleep_temp & info$name == "regina" ~ "on", # TOO HOT IN THE MASTER ROOM DURING OTHER TIME
+    info$temp >= inactive_temp & info$name == "regina" ~ "on", # TOO HOT IN THE MASTER ROOM DURING OTHER TIME
     1 == 1 ~ "off"
 )
 
