@@ -4,4 +4,4 @@
 */5 * * * * Rscript /home/jacobrozran/ecobee/ecobee_AC.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 # HEAT - CURRENTLY OFF
 # */5 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
-0 0 * * * /bin/bash /home/jacobrozran/ecobee/log_rotaion.sh >> /home/jacobrozran/ecobee/log_roation.log 2>&1
+0 0 * * * /bin/bash /home/jacobrozran/ecobee/log_rotation.sh >> /home/jacobrozran/ecobee/log_rotation.log 2>&1
