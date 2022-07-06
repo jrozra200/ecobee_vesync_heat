@@ -15,20 +15,20 @@
       "brand": "ecobee",
       "features": "Home,HomeKit",
       "lastModified": "2022-07-05 09:30:27",
-      "thermostatTime": "2022-07-06 15:56:42",
-      "utcTime": "2022-07-06 19:56:42",
+      "thermostatTime": "2022-07-06 16:00:05",
+      "utcTime": "2022-07-06 20:00:05",
       "remoteSensors": [
         {
           "id": "rs:100",
           "name": "Living Room",
           "type": "ecobee3_remote_sensor",
           "code": "C5FY",
-          "inUse": true,
+          "inUse": false,
           "capability": [
             {
               "id": "1",
               "type": "temperature",
-              "value": "750"
+              "value": "748"
             },
             {
               "id": "2",
@@ -65,12 +65,12 @@
             {
               "id": "1",
               "type": "temperature",
-              "value": "744"
+              "value": "735"
             },
             {
               "id": "2",
               "type": "humidity",
-              "value": "53"
+              "value": "54"
             }
           ]
         },
@@ -84,7 +84,7 @@
             {
               "id": "1",
               "type": "temperature",
-              "value": "734"
+              "value": "732"
             },
             {
               "id": "2",
@@ -103,7 +103,7 @@
             {
               "id": "1",
               "type": "temperature",
-              "value": "760"
+              "value": "755"
             },
             {
               "id": "2",

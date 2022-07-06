@@ -2958,3 +2958,42 @@ No encoding supplied: defaulting to UTF-8.
 4 office 73.6     true 2022-07-06 19:55:04 2022-07-06 15:55:04     on
 5 regina 76.4     true 2022-07-06 19:55:04 2022-07-06 15:55:04     on
 [1] "2022-07-06 19:55:10: Updated the rooms as needed. Script Complete"
+[1] "2022-07-06 20:00:01: Script Started"
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[1] "2022-07-06 20:00:02: Libraries Loaded. Refreshing Ecobee Creds"
+No encoding supplied: defaulting to UTF-8.
+No encoding supplied: defaulting to UTF-8.
+No encoding supplied: defaulting to UTF-8.
+[1] "2022-07-06 20:00:03: Refreshed Ecobee Creds. Getting temps."
+[1] "2022-07-06 20:00:03: Got Temps. Formatting Data."
+[1] "Is it a Weekend? FALSE"
+[1] "Current Time: 20"
+[1] "Is Afternoon Nap? FALSE"
+[1] "Is Kid's Sleep Time? FALSE"
+[1] "Is Parent's Sleep Time (early)? FALSE"
+[1] "Is Parent's Sleep Time (Late)? FALSE"
+[1] "Is Parent's Sleep Time (Wake Up)? FALSE"
+[1] "Is Work Time? TRUE"
+[1] "2022-07-06 20:00:03: Formatted Data. Telling VeSync what to do."
+[1] "2022-07-06 20:00:03: here is the current status of each room and the state it should be in:"
+    name temp occupied            time_utc          time_local action
+2  ellie 75.9     true 2022-07-06 20:00:05 2022-07-06 16:00:05     on
+4 office 73.2     true 2022-07-06 20:00:05 2022-07-06 16:00:05     on
+5 regina 75.5     true 2022-07-06 20:00:05 2022-07-06 16:00:05     on

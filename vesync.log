@@ -4822,3 +4822,7 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/jacobrozran/ecobe
 2022-07-06 19:56:47.565632: Connected to VeSync. Figuring out what to do for regina
 2022-07-06 19:56:47.565704: regina outlet is off and needs to be on
 2022-07-06 19:56:47.876121: turned on switch and now script is complete.
+2022-07-06 20:00:04.261704: Libraries loaded & script starting.
+2022-07-06 20:00:06.776980: Connected to VeSync. Figuring out what to do for ellie
+2022-07-06 20:00:06.777058: ellie outlet is on and needs to be on
+2022-07-06 20:00:06.777065: did nothing and now script is complete.
