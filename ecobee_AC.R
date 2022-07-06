@@ -102,7 +102,7 @@ info$action <- case_when(
          info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
     (is_sleeptime_parents_late == TRUE & info$temp >= sleep_temp) & 
         info$name == "regina" ~ "on",
-    info$temp >= inactive_temp & info$name == "regina" ~ "on", # TOO HOT IN THE MASTER ROOM DURING OTHER TIME
+    info$temp >= 68 & info$name == "regina" ~ "on", # TOO HOT IN THE MASTER ROOM DURING OTHER TIME
     1 == 1 ~ "off"
 )
 
