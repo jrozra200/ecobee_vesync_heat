@@ -92,7 +92,7 @@ active_temp <- 70.0
 inactive_temp <- 74.0
 
 info$action <- case_when(
-    (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
+    (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
         info$temp >= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
     info$temp >= inactive_temp & info$name == "ellie" ~ "on", # TOO HOT IN THE KIDS ROOM DURING REGULAR TIME
     ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
