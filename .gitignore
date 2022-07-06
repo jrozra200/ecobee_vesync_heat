@@ -5,3 +5,8 @@
 
 vesync.config
 ecobee.config
+
+ecobee.log
+vesync.log
+
+response.json
