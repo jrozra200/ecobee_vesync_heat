@@ -1,0 +1,10 @@
+Thu Jul 7 00:00:01 UTC 2022: Log Rotation Script Started.
+mv: cannot move '/home/jacobrozran/ecobee/ecobee.log' to '/home/jacobrozran/ecobee/logs/ecobee20220707.log': No such file or directory
+Thu Jul 7 00:00:01 UTC 2022: Moved Ecobee Logs.
+mv: cannot stat '/home/jacobrozran/ecobee/send_notification.log': No such file or directory
+Thu Jul 7 00:00:01 UTC 2022: Moved Notification Sent Logs.
+mv: cannot move '/home/jacobrozran/ecobee/vesync.log' to '/home/jacobrozran/ecobee/logs/vesync20220707.log': No such file or directory
+mv: cannot move '/home/jacobrozran/ecobee/log_rotation.log' to '/home/jacobrozran/ecobee/logs/log_rotation20220707.log': No such file or directory
+Thu Jul 7 00:00:01 UTC 2022: Moved Vesync Logs.
+find: ‘/home/jacobrozran/ecobee/logs/’: No such file or directory
+Thu Jul 7 00:00:01 UTC 2022: Deleted logs that are older than 1 day.
