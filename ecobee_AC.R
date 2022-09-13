@@ -68,7 +68,7 @@ print(paste0("Is it a Weekend? ", is_it_weekend))
 current_time <- hour(Sys.time()) + (minute(Sys.time()) / 60)
 print(paste0("Current Time: ", current_time))
 
-is_afternoon_nap <- ifelse(current_time >= 15 & current_time <= 17.5, TRUE, FALSE)
+is_afternoon_nap <- FALSE
 print(paste0("Is Afternoon Nap? ", is_afternoon_nap))
 
 is_sleeptime <- ifelse(current_time >= 22.25 | current_time <= 10.5, TRUE, FALSE)
