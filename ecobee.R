@@ -1,6 +1,5 @@
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly = TRUE)
-print(args)
 
 print(paste0(Sys.time(), ": Script Started"))
 library(lubridate, quietly = TRUE)
