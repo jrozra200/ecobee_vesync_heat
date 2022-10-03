@@ -1,8 +1,8 @@
 # CRONTAB SETTINGS
 
 # AC - CURRENTLY ON
-*/5 * * * * Rscript /home/jacobrozran/ecobee/ecobee_AC.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
+# */5 * * * * Rscript /home/jacobrozran/ecobee/ecobee_AC.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 # HEAT - CURRENTLY OFF
-# */5 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
+*/5 * * * * Rscript /home/jacobrozran/ecobee/ecobee_heat.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 # LOG ROTATION SCRIPT
 0 0 * * * /bin/bash /home/jacobrozran/ecobee/log_rotation.sh >> /home/jacobrozran/ecobee/log_rotation.log 2>&1

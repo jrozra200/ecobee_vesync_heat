@@ -68,7 +68,7 @@ print(paste0("Is it a Weekend? ", is_it_weekend))
 current_time <- hour(Sys.time()) + (minute(Sys.time()) / 60)
 print(paste0("Current Time: ", current_time))
 
-is_afternoon_nap <- ifelse(current_time >= 15 & current_time <= 17.5, TRUE, FALSE)
+is_afternoon_nap <- FALSE
 print(paste0("Is Afternoon Nap? ", is_afternoon_nap))
 
 is_sleeptime <- ifelse(current_time >= 22.25 | current_time <= 10.5, TRUE, FALSE)
@@ -87,15 +87,22 @@ print(paste0("Is Parent's Sleep Time (Wake Up)? ", is_sleeptime_parents_wu))
 is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
 print(paste0("Is Work Time? ", is_worktime))
 
+sleep_temp <- 70.0
+active_temp <- 72.0
+inactive_temp <- 74.0
+
 info$action <- case_when(
-    (is_sleeptime == TRUE | (is_it_weekend == TRUE & is_afternoon_nap == TRUE)) & 
-        info$temp <= 68.0 & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
+    (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
+        info$temp <= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
+    info$temp <= inactive_temp & info$name == "ellie" ~ "on", # TOO COLD IN THE KIDS ROOM DURING REGULAR TIME
     ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-        info$temp <= 70.0 & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-    ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= 72) & 
-         info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
-    (is_sleeptime_parents_late == TRUE & info$temp <= 70.0) & 
+        info$temp <= active_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
+    info$temp <= inactive_temp & info$name == "office" ~ "on", # TOO COLD IN THE OFFICE ROOM DURING OTHER TIME
+    ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= active_temp) & 
+        info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
+    (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
         info$name == "regina" ~ "on",
+    info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE MASTER ROOM DURING OTHER TIME
     1 == 1 ~ "off"
 )
 
