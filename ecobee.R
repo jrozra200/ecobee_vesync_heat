@@ -91,9 +91,9 @@ is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
 print(paste0("Is Work Time? ", is_worktime))
 
 if (args[1] == "heat") {
-    sleep_temp <- 70.0
-    active_temp <- 72.0
-    inactive_temp <- 68.0
+    sleep_temp <- 68.0
+    active_temp <- 70.0
+    inactive_temp <- 66.0
     
     info$action <- case_when(
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
