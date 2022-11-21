@@ -93,6 +93,7 @@ print(paste0("Is Work Time? ", is_worktime))
 if (args[1] == "heat") {
     sleep_temp <- 68.0
     active_temp <- 70.0
+    office_temp <- 72.0
     inactive_temp <- 66.0
     
     info$action <- case_when(
@@ -100,7 +101,7 @@ if (args[1] == "heat") {
             info$temp <= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
         info$temp <= inactive_temp & info$name == "ellie" ~ "on", # TOO COLD IN THE KIDS ROOM DURING REGULAR TIME
         ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-            info$temp <= active_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
+            info$temp <= office_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
         info$temp <= inactive_temp & info$name == "office" ~ "on", # TOO COLD IN THE OFFICE ROOM DURING OTHER TIME
         ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= active_temp) & 
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
