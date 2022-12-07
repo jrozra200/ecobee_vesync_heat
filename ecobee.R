@@ -77,7 +77,7 @@ print(paste0("Is Afternoon Nap? ", is_afternoon_nap))
 is_sleeptime <- ifelse(current_time >= 22.25 | current_time <= 10.5, TRUE, FALSE)
 print(paste0("Is Kid's Sleep Time? ", is_sleeptime))
 
-is_sleeptime_parents_early <- ifelse(current_time >= 23.0 | current_time <= 1.0, TRUE, FALSE)
+is_sleeptime_parents_early <- ifelse(current_time >= 22.0 | current_time <= 1.0, TRUE, FALSE)
 print(paste0("Is Parent's Sleep Time (early)? ", is_sleeptime_parents_early))
 
 is_sleeptime_parents_late <- ifelse(current_time > 1.0 & current_time <= 9.5, TRUE, FALSE)
@@ -95,6 +95,7 @@ if (args[1] == "heat") {
     active_temp <- 70.0
     office_temp <- 72.0
     inactive_temp <- 66.0
+    regina_temp <- 74.0
     
     info$action <- case_when(
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
@@ -103,7 +104,7 @@ if (args[1] == "heat") {
         ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
             info$temp <= office_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
         info$temp <= inactive_temp & info$name == "office" ~ "on", # TOO COLD IN THE OFFICE ROOM DURING OTHER TIME
-        ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= active_temp) & 
+        ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= regina_temp) & 
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
             info$name == "regina" ~ "on",
