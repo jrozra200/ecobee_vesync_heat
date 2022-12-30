@@ -62,7 +62,7 @@ for(sensor in 1:length(response$thermostatList[[1]]$remoteSensors)){
 }
 
 info$name <- tolower(gsub("'s Room", "", info$name))
-info <- info[info$name %in% c("ellie", "office", "regina"), ]
+info <- info[info$name %in% c("ellie", "luke", "regina"), ]
 
 is_it_weekend <- ifelse(weekdays(Sys.Date()) %in% c("Saturday", "Sunday"), TRUE, 
                         FALSE)
@@ -93,17 +93,17 @@ print(paste0("Is Work Time? ", is_worktime))
 if (args[1] == "heat") {
     sleep_temp <- 68.0
     active_temp <- 70.0
-    office_temp <- 72.0
+    regina_temp <- 72.0
     inactive_temp <- 66.0
     regina_temp <- 74.0
     
     info$action <- case_when(
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
-            info$temp <= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
-        info$temp <= inactive_temp & info$name == "ellie" ~ "on", # TOO COLD IN THE KIDS ROOM DURING REGULAR TIME
+            info$temp <= sleep_temp & info$name %in% c("ellie", "luke") ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
+        info$temp <= inactive_temp & info$name %in% c("ellie", "luke") ~ "on", # TOO COLD IN THE KIDS ROOM DURING REGULAR TIME
         ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-            info$temp <= office_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-        info$temp <= inactive_temp & info$name == "office" ~ "on", # TOO COLD IN THE OFFICE ROOM DURING OTHER TIME
+            info$temp <= regina_temp & info$name == "regina" ~ "on", # MY regina TURNS ON DURING THE WEEK OR IF OCCUPIED
+        info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE regina ROOM DURING OTHER TIME
         ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= regina_temp) & 
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
@@ -118,11 +118,11 @@ if (args[1] == "heat") {
     
     info$action <- case_when(
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
-            info$temp >= sleep_temp & info$name == "ellie" ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
-        info$temp >= inactive_temp & info$name == "ellie" ~ "on", # TOO HOT IN THE KIDS ROOM DURING REGULAR TIME
+            info$temp >= sleep_temp & info$name %in% c("ellie", "luke") ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
+        info$temp >= inactive_temp & info$name %in% c("ellie", "luke") ~ "on", # TOO HOT IN THE KIDS ROOM DURING REGULAR TIME
         ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-            info$temp >= active_temp & info$name == "office" ~ "on", # MY OFFICE TURNS ON DURING THE WEEK OR IF OCCUPIED
-        info$temp >= inactive_temp & info$name == "office" ~ "on", # TOO HOT IN THE OFFICE ROOM DURING OTHER TIME
+            info$temp >= active_temp & info$name == "regina" ~ "on", # MY regina TURNS ON DURING THE WEEK OR IF OCCUPIED
+        info$temp >= inactive_temp & info$name == "regina" ~ "on", # TOO HOT IN THE regina ROOM DURING OTHER TIME
         ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp >= active_temp) & 
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp >= sleep_temp) & 
