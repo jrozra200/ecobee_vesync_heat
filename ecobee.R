@@ -91,7 +91,7 @@ is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
 print(paste0("Is Work Time? ", is_worktime))
 
 if (args[1] == "heat") {
-    sleep_temp <- 68.0
+    sleep_temp <- 66.0
     active_temp <- 70.0
     regina_temp <- 72.0
     inactive_temp <- 66.0
@@ -101,9 +101,6 @@ if (args[1] == "heat") {
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
             info$temp <= sleep_temp & info$name %in% c("ellie", "luke") ~ "on", # KIDS ROOM TURNS ON AT NIGHT AND NAP TIME
         info$temp <= inactive_temp & info$name %in% c("ellie", "luke") ~ "on", # TOO COLD IN THE KIDS ROOM DURING REGULAR TIME
-        ((is_it_weekend == FALSE & is_worktime == TRUE) | info$occupied == "true") & 
-            info$temp <= regina_temp & info$name == "regina" ~ "on", # MY regina TURNS ON DURING THE WEEK OR IF OCCUPIED
-        info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE regina ROOM DURING OTHER TIME
         ((is_sleeptime_parents_early == TRUE | is_sleeptime_parents_wu) & info$temp <= regina_temp) & 
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
