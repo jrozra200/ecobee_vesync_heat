@@ -62,7 +62,7 @@ for(sensor in 1:length(response$thermostatList[[1]]$remoteSensors)){
 }
 
 info$name <- tolower(gsub("'s Room", "", info$name))
-info <- info[info$name %in% c("ellie", "luke", "regina"), ]
+info <- info[info$name %in% c("ellie", "luke", "regina", "office"), ]
 
 is_it_weekend <- ifelse(weekdays(Sys.Date()) %in% c("Saturday", "Sunday"), TRUE, 
                         FALSE)
@@ -93,7 +93,7 @@ print(paste0("Is Work Time? ", is_worktime))
 if (args[1] == "heat") {
     sleep_temp <- 66.0
     active_temp <- 70.0
-    regina_temp <- 72.0
+    work_temp <- 72.0
     inactive_temp <- 66.0
     regina_temp <- 74.0
     
@@ -105,6 +105,7 @@ if (args[1] == "heat") {
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
             info$name == "regina" ~ "on",
+        is_worktime & info$name == "office" ~ "on",
         info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE MASTER ROOM DURING OTHER TIME
         1 == 1 ~ "off"
     )
