@@ -93,7 +93,7 @@ print(paste0("Is Work Time? ", is_worktime))
 if (args[1] == "heat") {
     sleep_temp <- 66.0
     active_temp <- 70.0
-    work_temp <- 72.0
+    work_temp <- 70.0
     inactive_temp <- 66.0
     regina_temp <- 74.0
     
