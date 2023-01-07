@@ -105,7 +105,8 @@ if (args[1] == "heat") {
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
             info$name == "regina" ~ "on",
-        is_worktime & info$name == "office" & info$temp <= work_temp ~ "on",
+        ((day(Sys.Date()) >= 2 & day(Sys.Date()) <= 6) | info$occupied == "true") & 
+            is_worktime & info$name == "office" & info$temp <= work_temp ~ "on",
         info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE MASTER ROOM DURING OTHER TIME
         1 == 1 ~ "off"
     )
