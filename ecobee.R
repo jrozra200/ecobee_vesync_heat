@@ -87,7 +87,12 @@ is_sleeptime_parents_wu <- ifelse(((current_time > 9.75 & current_time <= 11) |
                                        (current_time > 7.75 & current_time <= 8.25)), TRUE, FALSE)
 print(paste0("Is Parent's Sleep Time (Wake Up)? ", is_sleeptime_parents_wu))
 
-is_worktime <- ifelse(current_time >= 13, TRUE, FALSE)
+is_worktime <- (ifelse(current_time >= 13, TRUE, FALSE) & 
+                    !(weekdays(Sys.Date()) == "Sunday" | 
+                          weekdays(Sys.Date()) == "Saturday" | 
+                          weekdays(Sys.Date()) == "Tuesday" | 
+                          weekdays(Sys.Date()) == "Wednesday" | 
+                          weekdays(Sys.Date()) == "Thursday"))
 print(paste0("Is Work Time? ", is_worktime))
 
 if (args[1] == "heat") {
@@ -105,8 +110,7 @@ if (args[1] == "heat") {
             info$name == "regina" ~ "on", # PARENTS BEDROOM HEATING AT NIGHT AND NAP TIME
         (is_sleeptime_parents_late == TRUE & info$temp <= sleep_temp) & 
             info$name == "regina" ~ "on",
-        ((!(weekdays(Sys.Date()) == "Sunday" | weekdays(Sys.Date()) == "Saturday") & 
-              is_worktime) | info$occupied == "true") & 
+        (is_worktime | info$occupied == "true") & 
             info$name == "office" & info$temp <= work_temp ~ "on",
         info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE MASTER ROOM DURING OTHER TIME
         1 == 1 ~ "off"
