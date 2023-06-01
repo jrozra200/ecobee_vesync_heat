@@ -115,10 +115,12 @@ if (args[1] == "heat") {
         info$temp <= inactive_temp & info$name == "regina" ~ "on", # TOO COLD IN THE MASTER ROOM DURING OTHER TIME
         1 == 1 ~ "off"
     )
-} else {
+} else { # AC
     sleep_temp <- 70.0
     active_temp <- 72.0
+    work_temp <- 70.0
     inactive_temp <- 74.0
+    regina_temp <- 74.0
     
     info$action <- case_when(
         (is_sleeptime == TRUE | is_afternoon_nap == TRUE) & 
