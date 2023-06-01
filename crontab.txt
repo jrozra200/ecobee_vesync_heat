@@ -1,7 +1,7 @@
 # CRONTAB SETTINGS
 
-# DYNAMIC SCRIPT - CURRENTLY HEAT
-*/5 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R heat >> /home/jacobrozran/ecobee/ecobee.log 2>&1
+# DYNAMIC SCRIPT - CURRENTLY AC
+*/5 * * * * Rscript /home/jacobrozran/ecobee/ecobee.R ac >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 # AC - CURRENTLY ON
 # */5 * * * * Rscript /home/jacobrozran/ecobee/ecobee_AC.R >> /home/jacobrozran/ecobee/ecobee.log 2>&1
 # HEAT - CURRENTLY OFF
